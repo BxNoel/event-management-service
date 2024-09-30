@@ -1,9 +1,9 @@
 # event-management-service
-Responsibilities: Handles all event-related actions like creation, editing, deletion, and viewing.
+Responsibilities: Handles all event-related actions like creation, editing, deletion, and viewing. (Sample data inserted for now).
 
 
 ---
-**Quey Command for Event Management Service**
+**Query Command for Event Management Service**
 
 ```
 CREATE DATABASE IF NOT EXISTS event_management_service;
