@@ -5,8 +5,9 @@ Responsibilities: Handles all event-related actions like creation, editing, dele
 ---
 **Quey Command for Event Management Service**
 
-CREATE DATABASE IF NOT EXISTS event_management_service;
 ```
+CREATE DATABASE IF NOT EXISTS event_management_service;
+
 **Use the event_management_service database**
 USE event_management_service;
 
