@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 
 from app import models
 from app import schemas
-from typing import List  # Import List
+from typing import List 
 from app.database import engine
 from .dependencies import get_db
 
@@ -17,7 +17,8 @@ def read_root():
 
 @app.get("/organizations/", response_model=List[schemas.Organization])
 def read_organizations(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
-    return db.query(models.Organization).offset(skip).limit(limit).all()
+    organizations = db.query(models.Organization).offset(skip).limit(limit).all()
+    return organizations
 
 @app.get("/events/", response_model=List[schemas.Event])
 def read_events(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
