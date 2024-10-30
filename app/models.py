@@ -1,32 +1,30 @@
-from sqlalchemy import Column, Integer, String, Text, DateTime, ForeignKey, TIMESTAMP
+# app/models.py
+
+from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Text
 from sqlalchemy.orm import relationship
-from sqlalchemy.sql import func
 from .database import Base
+from datetime import datetime
 
-# Organization Model
 class Organization(Base):
-    __tablename__ = "organizations"
+    __tablename__ = 'organizations'
 
-    org_id = Column(Integer, primary_key=True, autoincrement=True, index=True)
-    name = Column(String(100), nullable=False)
+    org_id = Column(Integer, primary_key=True, index=True)
+    name = Column(String(100), index=True, nullable=False)
     description = Column(Text)
-    created_at = Column(TIMESTAMP, server_default=func.now())
+    created_at = Column(DateTime, default=datetime.utcnow)
 
-    # Relationship to Event
-    events = relationship("Event", back_populates="organization", cascade="all, delete")
+    events = relationship("Event", back_populates="organization")
 
-# Event Model
 class Event(Base):
-    __tablename__ = "events"
+    __tablename__ = 'events'
 
-    event_id = Column(Integer, primary_key=True, autoincrement=True, index=True)
-    org_id = Column(Integer, ForeignKey("organizations.org_id", ondelete="CASCADE"), nullable=False)
-    title = Column(String(255), nullable=False)
+    event_id = Column(Integer, primary_key=True, index=True)
+    title = Column(String(255), index=True, nullable=False)
     description = Column(Text)
     event_date = Column(DateTime, nullable=False)
     location = Column(String(255), nullable=False)
-    created_at = Column(TIMESTAMP, server_default=func.now())
-    updated_at = Column(TIMESTAMP, server_default=func.now(), onupdate=func.now())
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    org_id = Column(Integer, ForeignKey('organizations.org_id'), nullable=False)
 
-    # Relationship to Organization
     organization = relationship("Organization", back_populates="events")
