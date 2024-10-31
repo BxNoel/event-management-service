@@ -1,0 +1,16 @@
+2024-10-30 23:40:41 - Incoming request: GET /docs
+2024-10-30 23:40:41 - Completed response: 200 /docs
+2024-10-30 23:40:41 - Incoming request: GET /openapi.json
+2024-10-30 23:40:41 - Completed response: 200 /openapi.json
+2024-10-30 23:40:44 - Incoming request: GET /events/
+2024-10-30 23:40:44 - Completed response: 200 /events/
+2024-10-30 23:41:01 - Incoming request: POST /events/schedule/1
+2024-10-30 23:41:01 - Completed response: 200 /events/schedule/1
+2024-10-30 23:41:04 - Incoming request: POST /events/schedule/1
+2024-10-30 23:41:04 - Completed response: 200 /events/schedule/1
+2024-10-30 23:41:08 - Incoming request: POST /events/schedule/0
+2024-10-30 23:41:09 - Completed response: 404 /events/schedule/0
+2024-10-30 23:41:24 - Incoming request: GET /events/search
+2024-10-30 23:41:24 - Completed response: 200 /events/search
+2024-10-30 23:41:30 - Incoming request: GET /events/search
+2024-10-30 23:41:30 - Completed response: 200 /events/search
