@@ -19,14 +19,21 @@ class Organization(Base):
 class Event(Base):
     __tablename__ = "events"
 
-    event_id = Column(Integer, primary_key=True, autoincrement=True, index=True)
-    org_id = Column(Integer, ForeignKey("organizations.org_id", ondelete="CASCADE"), nullable=False)
+    event_id = Column(Integer, primary_key=True, index=True)
+    org_id = Column(Integer, ForeignKey("organizations.org_id"), nullable=False)
     title = Column(String(255), nullable=False)
     description = Column(Text)
     event_date = Column(DateTime, nullable=False)
     location = Column(String(255), nullable=False)
-    created_at = Column(TIMESTAMP, server_default=func.now())
-    updated_at = Column(TIMESTAMP, server_default=func.now(), onupdate=func.now())
-
+    created_at = Column(DateTime)
+    updated_at = Column(DateTime)
     # Relationship to Organization
     organization = relationship("Organization", back_populates="events")
+    
+class CalendarEntry(Base):
+    __tablename__ = "calendar_entries"
+
+    entry_id = Column(Integer, primary_key=True, index=True)
+    event_id = Column(Integer, ForeignKey("events.event_id"), nullable=False)
+    calendar_date = Column(DateTime, nullable=False)
+    reminder_time = Column(DateTime, nullable=True)

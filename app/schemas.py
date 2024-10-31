@@ -28,3 +28,8 @@ class Organization(OrganizationBase):
     class Config:
         orm_mode = True
         allow_population_by_field_name = True  # This allows access via 'id' or 'org_id'
+
+class EventSearch(BaseModel):
+    title: Optional[str] = None
+    event_date: Optional[datetime] = None
+    location: Optional[str] = None
