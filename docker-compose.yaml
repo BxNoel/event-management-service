@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  webapp:
+    build: ./app  # Make sure the Dockerfile is in the ./app directory
+    command: sh -c "sleep 30s; uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
+    ports:
+      - "8000:8000"
+    depends_on:
+      - database
+
+  database:
+    build: ./database/ 
+    restart: always
+    environment:
+      MYSQL_DATABASE: event_management_service
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - "3306:3306"  # Make sure the host port is not already in use

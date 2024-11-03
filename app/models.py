@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, Text, DateTime, ForeignKey, TIMESTAMP
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
-from .database import Base
+from database import Base
 
 # Organization Model
 class Organization(Base):

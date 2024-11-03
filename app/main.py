@@ -1,15 +1,15 @@
 from fastapi import FastAPI, Depends
 from sqlalchemy.orm import Session
 
-from app import models
-from app import schemas
+import models  # Import your models
+import schemas
 from typing import List 
-from app.database import engine
-from .dependencies import get_db
+from database import engine, Base
+from dependencies import get_db
 
 app = FastAPI()
 
-models.Base.metadata.create_all(bind=engine)
+Base.metadata.create_all(bind=engine)
 
 @app.get("/")
 def read_root():
